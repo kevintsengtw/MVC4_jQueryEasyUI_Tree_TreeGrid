@@ -2,29 +2,30 @@
 //使用方式 : var fullName = String.format('Hello. My name is {0} {1}.', 'Kevin', 'Tseng');
 //Kevin
 //2011.07.07
-String.format = function () {
+String.format = function() {
     var s = arguments[0];
-    if (s == null) return "";
+    if (s == null)
+        return "";
 
     for (var i = 0; i < arguments.length - 1; i++) {
         var reg = getStringFormatPlaceHolderRegEx(i);
         s = s.replace(reg, (arguments[i + 1] == null ? "" : arguments[i + 1]));
     }
     return cleanStringFormatResult(s);
-}
+};
 
 //可在Javascript中使用如同C#中的string.format (對jQuery String的擴充方法)
 //使用方式 : var fullName = 'Hello. My name is {0} {1}.'.format('Kevin', 'Tseng');
 //Kevin
 //2011.07.07
-String.prototype.format = function () {
+String.prototype.format = function() {
     var txt = this.toString();
     for (var i = 0; i < arguments.length; i++) {
         var exp = getStringFormatPlaceHolderRegEx(i);
         txt = txt.replace(exp, (arguments[i] == null ? "" : arguments[i]));
     }
     return cleanStringFormatResult(txt);
-}
+};
 
 //讓輸入的字串可以包含{}
 //Kevin

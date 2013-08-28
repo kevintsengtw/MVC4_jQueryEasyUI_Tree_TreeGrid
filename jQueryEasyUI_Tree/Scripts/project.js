@@ -1,19 +1,20 @@
-﻿(function (window) {
+﻿;
+(function (window) {
     //===========================================================================================
     if (typeof (jQuery) === 'undefined') { alert('jQuery Library NotFound.'); return; }
 
     var project = window.project =
-     {
-         AppName: 'project',
-         ActionUrls: {}
-     };
+    {
+        AppName: 'project',
+        ActionUrls: {}
+    };
     //===========================================================================================
     jQuery.extend(project, {
 
         Initialize: function () {
-        	/// <summary>
+            /// <summary>
             /// 初始化函式
-        	/// </summary>
+            /// </summary>
 
         },
         
