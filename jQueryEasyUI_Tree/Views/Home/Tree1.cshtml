@@ -1,0 +1,38 @@
+﻿@using jQueryEasyUI_Tree.Models;
+@model jQueryEasyUI_Tree.ViewModels.TreeViewModel
+
+@{
+    ViewBag.Title = "Display - Tree, ViewModel";
+    Layout = "~/Views/Shared/_TreeGridLayout.cshtml";
+}
+
+@helper GenerateTree(IEnumerable<TreeNode> nodes, Guid nodeID)
+{
+    if (nodes.Any(x => x.ParentID == nodeID))
+    {
+        <ul>
+        @foreach (var item in nodes.Where(x => x.ParentID == nodeID).OrderBy(x => x.Sort))
+        {
+            <li>
+                <span>@item.Name</span>
+                @GenerateTree(nodes, item.ID)
+            </li>
+        }
+        </ul>
+    }
+}
+
+<h2>ASP.NET MVC + jQuery EasyUI - Tree</h2>
+@Html.ActionLink("Home", "Index", "Home")
+<hr />
+<div id="TreeView">
+    @if (Model.RootNode != null && Model.TreeNodes.Count > 0)
+    {
+        <ul id="tt" class="easyui-tree">
+            <li>
+                <span>@Model.RootNode.Name</span>
+                @GenerateTree(Model.TreeNodes, Model.RootNode.ID)
+            </li>
+        </ul>
+    }
+</div>

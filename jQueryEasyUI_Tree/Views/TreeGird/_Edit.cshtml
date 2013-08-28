@@ -1,0 +1,29 @@
+﻿<div id="EditDialog" class="easyui-dialog"
+    style="width: 400px; height: 250px; padding: 10px 20px; line-height: 20px;"
+    closed="true" buttons="#dlg-buttons">
+    <div class="ftitle" style="font-weight: bolder;">節點資訊</div>
+    <hr />
+    <form id="EditForm" method="post" action="">
+    <input type="hidden" id="NodeID" name="NodeID" />
+    <input type="hidden" id="IsRootNode" name="IsRootNode" />
+    <div style="padding: 10px;">
+        <label>上層節點：</label>
+        <select id="ParentNode" name="ParentNode" class="easyui-combotree" style="width: 250px;"></select>
+        <br />
+    </div>
+    <div style="padding: 10px;">
+        <label>節點名稱：</label>
+        <input type="text" id="NodeName" name="NodeName" style="width: 245px;" />
+        <br />
+    </div>
+    <div style="padding: 10px;">
+        <label>是否啟用：</label>
+        <input type="checkbox" id="NodeEnable" name="NodeEnable" />
+        <br />
+    </div>
+    </form>
+</div>
+<div id="dlg-buttons">
+    <a href="#" class="easyui-linkbutton" iconcls="icon-ok" id="ButtonSave">儲存</a>
+    <a href="#" class="easyui-linkbutton" iconcls="icon-cancel" id="ButtonCancel">取消</a>
+</div>

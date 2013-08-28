@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_TreeGridLayout.cshtml";
+}
+
+<h2>ASP.NET MVC + jQuery EasyUI - TreeGrid</h2>
+
+@Html.ActionLink("Home", "Index", "Home")
+<input type="button" value="重新整理" id="ButtonRefresh" />
+<input type="button" value="新增節點" id="ButtonCreate" />
+<hr />
+
+<table id="TreeGrid"></table>
+
+<!--編輯Dialog-->
+@Html.Partial("_Edit")
+
+@section scripts
+{
+    <script type="text/javascript" src="~/Scripts/project.js"></script>
+    <script type="text/javascript" src="~/Scripts/project.TreeNode.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {            
+            var actionUrls =
+            {
+                HasRootNode: '@Url.Action("HasRootNode", "TreeGird")',
+                LoadTreeNodeDDL: '@Url.Action("LoadTreeNodeDDL", "TreeGird")',
+                GetTreeNodeJSON: '@Url.Action("GetTreeNodeJSON", "TreeGird")',
+                Create: '@Url.Action("Create", "TreeGird")',
+                GetTreeNode: '@Url.Action("GetTreeNode", "TreeGird")',
+                Update: '@Url.Action("Update", "TreeGird")',
+                Delete: '@Url.Action("Delete", "TreeGird")',
+                MoveUp: '@Url.Action("MoveUp", "TreeGird")',
+                MoveDown: '@Url.Action("MoveDown", "TreeGird")'
+            };
+
+            project.TreeNode.Initialize(actionUrls);
+        });
+
+    </script>
+}

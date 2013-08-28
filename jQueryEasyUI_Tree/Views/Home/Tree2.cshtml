@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Tree, Load JSON";
+    Layout = "~/Views/Shared/_TreeGridLayout.cshtml";
+}
+
+<h2>ASP.NET MVC + jQuery EasyUI - Tree, Load JSON</h2>
+@Html.ActionLink("Home", "Index", "Home")
+<hr />
+<div>
+    <ul id="tt" class="easyui-tree"></ul>
+</div>
+<input type="hidden" id="HasRootNode" name="HasRootNode" value="@ViewBag.HasRootNode" />
+
+@section scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var hasData = $.trim($('#HasRootNode').val()) === 'true';
+            if (hasData) {
+                $('#tt').tree({
+                    url: '@Url.Action("GetTreeNodeJSON", "Home")'
+                });
+            }
+        });
+    </script>
+}

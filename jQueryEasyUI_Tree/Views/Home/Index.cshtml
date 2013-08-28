@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ASP.NET MVC + jQuery EasyUI - Tree Index</h2>
+<hr />
+<ul>
+    <li>
+        @Html.ActionLink("Display - Tree, ViewModel", "Tree1", "Home")
+    </li>
+    <li>
+        @Html.ActionLink("Display - Tree, JSON", "Tree2", "Home")
+    </li>
+    <li>
+        @Html.ActionLink("Display - Tree, Async", "Tree3", "Home")
+    </li>
+    <li>
+        @Html.ActionLink("Manage - TreeGrid", "Index", "TreeGird")
+    </li>
+</ul>

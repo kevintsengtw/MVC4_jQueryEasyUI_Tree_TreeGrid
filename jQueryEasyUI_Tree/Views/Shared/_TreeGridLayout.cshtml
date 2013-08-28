@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/easyui/themes/default/easyui.css" rel="stylesheet" />
+    <link href="~/Content/easyui/themes/icon.css" rel="stylesheet" />
+</head>
+<body>
+    <div>
+        @RenderBody()
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    <script src="~/Content/easyui/jquery.easyui.min.js"></script>
+    <script src="~/Scripts/project.extends.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

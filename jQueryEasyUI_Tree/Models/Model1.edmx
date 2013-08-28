@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Database1Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="Database1ModelStoreContainer">
+          <EntitySet Name="TreeNode" EntityType="Database1Model.Store.TreeNode" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_TreeNode_TreeNode" Association="Database1Model.Store.FK_TreeNode_TreeNode">
+            <End Role="TreeNode" EntitySet="TreeNode" />
+            <End Role="TreeNode1" EntitySet="TreeNode" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="TreeNode">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ParentID" Type="uniqueidentifier" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Sort" Type="int" Nullable="false" />
+          <Property Name="IsEnable" Type="bit" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdateDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_TreeNode_TreeNode">
+          <End Role="TreeNode" Type="Database1Model.Store.TreeNode" Multiplicity="0..1" />
+          <End Role="TreeNode1" Type="Database1Model.Store.TreeNode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TreeNode">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TreeNode1">
+              <PropertyRef Name="ParentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Database1Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="Database1Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TreeNode" EntityType="Database1Model.TreeNode" />
+          <AssociationSet Name="FK_TreeNode_TreeNode" Association="Database1Model.FK_TreeNode_TreeNode">
+            <End Role="TreeNode" EntitySet="TreeNode" />
+            <End Role="TreeNode1" EntitySet="TreeNode" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="TreeNode">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="ParentID" Type="Guid" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Sort" Type="Int32" Nullable="false" />
+          <Property Name="IsEnable" Type="Boolean" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="TreeNode1" Relationship="Database1Model.FK_TreeNode_TreeNode" FromRole="TreeNode" ToRole="TreeNode1" />
+          <NavigationProperty Name="TreeNode2" Relationship="Database1Model.FK_TreeNode_TreeNode" FromRole="TreeNode1" ToRole="TreeNode" />
+        </EntityType>
+        <Association Name="FK_TreeNode_TreeNode">
+          <End Role="TreeNode" Type="Database1Model.TreeNode" Multiplicity="0..1" />
+          <End Role="TreeNode1" Type="Database1Model.TreeNode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TreeNode">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TreeNode1">
+              <PropertyRef Name="ParentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Database1ModelStoreContainer" CdmEntityContainer="Database1Entities">
+          <EntitySetMapping Name="TreeNode">
+            <EntityTypeMapping TypeName="Database1Model.TreeNode">
+              <MappingFragment StoreEntitySet="TreeNode">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="無" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

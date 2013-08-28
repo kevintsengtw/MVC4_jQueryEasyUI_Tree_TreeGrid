@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "AsyncTree";
+    Layout = "~/Views/Shared/_TreeGridLayout.cshtml";
+}
+
+<h2>ASP.NET MVC + jQuery EasyUI - Tree, Async Load</h2>
+@Html.ActionLink("Home", "Index", "Home")
+<hr />
+<div>
+    @if ((bool)ViewBag.HasRootNode)
+    {
+        <ul id="tt" class="easyui-tree" url='@Url.Action("GetData", "Home")'></ul>    
+    }
+</div>
