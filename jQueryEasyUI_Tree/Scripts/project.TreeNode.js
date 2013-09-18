@@ -29,13 +29,14 @@
 
                 $('#ButtonCreate').click(function () {
                     current.MoveDownEditType = 'Create';
+                    current.Initilaize_TreeNodeDLL();
                     $('#EditDialog').dialog('open').dialog('setTitle', '新增節點');
                     $('#EditForm').form('clear');
                     $('#ParentNode')[0].selectedIndex = 0;
                 });
 
                 $('#ButtonRefresh').click(function () {
-                    current.Initialize_TreeGrid(); //重新載入TreeGrid
+                    $('#TreeGrid').treegrid('reload');  //重新載入TreeGrid
                     current.Initilaize_TreeNodeDLL(); //重新載入TreeNode下拉選單
                 });
 
@@ -137,7 +138,7 @@
                                 return content;
                             }
                         },
-                        { field: 'Name', title: '節點名稱', align: 'left' },
+                        { field: 'Name', title: '節點名稱', width: 200, align: 'left' },
                         {
                             field: 'IsEnable',
                             title: '是否啟用',
@@ -229,8 +230,7 @@
                                             $('#EditDialog #NodeEnable').attr('checked', false);
                                             $('#EditDialog #ParentNode')[0].selectedIndex = 0;
 
-                                            current.Initialize_TreeGrid();  //重新載入TreeGrid
-                                            current.Initilaize_TreeNodeDLL();   //重新載入TreeNode下拉選單
+                                            $('#TreeGrid').treegrid('reload');  //重新載入TreeGrid
                                         }
                                     } else {
                                         project.AlertErrorMessage('錯誤', '處理出現錯誤');
@@ -289,8 +289,7 @@
 
                         if (!EditTreeNode.ID) {
                             $.messager.alert('錯誤', '節點資料載入錯誤', 'error', function () {
-                                current.Initialize_TreeGrid();
-                                current.Initilaize_TreeNodeDLL();
+                                $('#TreeGrid').treegrid('reload');  //重新載入TreeGrid
                             });
                         }
                         else {
@@ -306,7 +305,6 @@
                     });
                 });
             },
-
             UpdateNode: function() {
                 /// <summary>
                 /// 更新節點
@@ -362,8 +360,7 @@
                                             $('#EditDialog #NodeEnable').attr('checked', false);
                                             $('#EditDialog #ParentNode')[0].selectedIndex = 0;
 
-                                            current.Initialize_TreeGrid();  //重新載入TreeGrid
-                                            current.Initilaize_TreeNodeDLL();   //重新載入TreeNode下拉選單
+                                            $('#TreeGrid').treegrid('reload');  //重新載入TreeGrid
                                         }
                                     }
                                     else {
@@ -402,9 +399,7 @@
                                                 }
                                                 else {
                                                     project.ShowMessage('訊息', '節點刪除完成.');
-
-                                                    current.Initialize_TreeGrid();  //重新載入TreeGrid
-                                                    current.Initilaize_TreeNodeDLL();   //重新載入TreeNode下拉選單
+                                                    $('#TreeGrid').treegrid('reload');  //重新載入TreeGrid
                                                 }
                                             }
                                             else {
@@ -446,9 +441,7 @@
                                         }
                                         else {
                                             project.ShowMessage('訊息', String.format('節點：「{0}」上移完成.', nodeName));
-
-                                            current.Initialize_TreeGrid();
-                                            current.Initilaize_TreeNodeDLL();
+                                            $('#TreeGrid').treegrid('reload'); //重新載入TreeGrid
                                         }
                                     }
                                     else {
@@ -488,9 +481,7 @@
                                         }
                                         else {
                                             project.ShowMessage('訊息', String.format('節點：「{0}」下移完成.', nodeName));
-
-                                            current.Initialize_TreeGrid();
-                                            current.Initilaize_TreeNodeDLL();
+                                            $('#TreeGrid').treegrid('reload');  //重新載入TreeGrid
                                         }
                                     }
                                     else {
